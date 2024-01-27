@@ -28,12 +28,24 @@ app.get("/listings", async (req, res) => {
 	res.render("./listings/index.ejs", { allListings });
 });
 
+//New Route
+app.get("/listings/new", (req, res) => {
+	res.render("./listings/new.ejs");
+});
+
+app.post("/listings", async (req, res) => {
+	const newListing = new listing(req.body.listing);
+	await newListing.save();
+	res.redirect("/listings");
+});
+
 // Show Route
 app.get("/listings/:id", async (req, res) => {
 	let { id } = req.params;
 	const listingData = await listing.findById(id);
 	res.render("./listings/show.ejs", { listingData });
 });
+
 app.get("/", (req, res) => {
 	res.send("Hi, I am root.");
 });
