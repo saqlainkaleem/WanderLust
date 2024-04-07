@@ -7,7 +7,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapasync.js");
-const ExpreeError = require("./utils/ExpressError.js");
+const ExpressError = require("./utils/ExpressError.js");
+const { listingSchema } = require("./schema.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
@@ -29,6 +30,16 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+const validateListing = (req, res, next) => {
+	const { error } = listingSchema.validate(req.body);
+	if (error) {
+		let errMsg = error.details.map((el) => el.message).join(",");
+		throw new ExpressError(400, errMsg);
+	} else {
+		next();
+	}
+};
+
 //Index Route
 app.get(
 	"/listings",
@@ -45,10 +56,8 @@ app.get("/listings/new", (req, res) => {
 
 app.post(
 	"/listings",
+	validateListing,
 	wrapAsync(async (req, res, next) => {
-		if (!req.body.listing) {
-			throw new ExpreeError(400, "Send valid data for listing");
-		}
 		const newListing = new listing(req.body.listing);
 		await newListing.save();
 		res.redirect("/listings");
@@ -68,6 +77,7 @@ app.get(
 //Update Route
 app.put(
 	"/listings/:id",
+	validateListing,
 	wrapAsync(async (req, res) => {
 		let { id } = req.params;
 		await listing.findByIdAndUpdate(id, { ...req.body.listing });
@@ -99,12 +109,12 @@ app.get("/", (req, res) => {
 });
 
 app.all("*", (req, res, next) => {
-	next(new ExpreeError(404, "Page Not Found!"));
+	next(new ExpressError(404, "Page Not Found!"));
 });
 // Custom Error
 app.use((err, req, res, next) => {
-	let { statusCode, message } = err;
-	res.status(statusCode).send(message);
+	let { statusCode = 500, message = "something went wrong" } = err;
+	res.status(statusCode).render("error.ejs", { message });
 });
 
 app.listen(8080, () => {
