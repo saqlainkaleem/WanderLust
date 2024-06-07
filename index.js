@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const ejs = require("ejs");
 const app = express();
 const listing = require("./models/listing.js");
+const Review = require("./models/review.js");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
@@ -103,6 +104,19 @@ app.get(
 		res.render("./listings/show.ejs", { listingData });
 	})
 );
+
+//Review Post Route
+app.post("/listings/:id/reviews", async (req, res) => {
+	let Listing = await listing.findById(req.params.id);
+	let newReview = new Review(req.body.review);
+
+	Listing.reviews.push(newReview);
+
+	await newReview.save();
+	await Listing.save();
+
+	res.redirect(`/listings/${Listing._id}`);
+});
 
 app.get("/", (req, res) => {
 	res.send("Hi, I am root.");
