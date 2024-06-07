@@ -32,7 +32,7 @@
 	<div class="col-8 offset-3 mb-3">
 		<hr />
 		<h4>Leave a Review</h4>
-		<form>
+		<form action="/listing/<%= listingData._id %>/reviews" method="post">
 			<div class="mb-3 mt-3">
 				<label for="rating" class="form-label">Rating</label>
 				<input
