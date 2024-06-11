@@ -134,6 +134,18 @@ app.post(
 	})
 );
 
+//Review Delete Route
+app.delete(
+	"/listings/:id/reviews/:reviewId",
+	wrapAsync(async (req, res) => {
+		let { id, reviewId } = req.params;
+		await listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+		await Review.findByIdAndDelete(reviewId);
+
+		res.redirect(`/listings/${id}`);
+	})
+);
+
 app.get("/", (req, res) => {
 	res.send("Hi, I am root.");
 });
