@@ -11,6 +11,8 @@ const wrapAsync = require("./utils/wrapasync.js");
 const ExpressError = require("./utils/ExpressError.js");
 const { listingSchema, reviewSchema } = require("./schema.js");
 
+const listings = require("./routes/listing.js");
+
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 main()
@@ -31,17 +33,6 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-//Validate Listing
-const validateListing = (req, res, next) => {
-	const { error } = listingSchema.validate(req.body);
-	if (error) {
-		let errMsg = error.details.map((el) => el.message).join(",");
-		throw new ExpressError(400, errMsg);
-	} else {
-		next();
-	}
-};
-
 //Validate Review
 const validateReview = (req, res, next) => {
 	const { error } = reviewSchema.validate(req.body);
@@ -53,69 +44,7 @@ const validateReview = (req, res, next) => {
 	}
 };
 
-//Index Route
-app.get(
-	"/listings",
-	wrapAsync(async (req, res) => {
-		const allListings = await listing.find({});
-		res.render("./listings/index.ejs", { allListings });
-	})
-);
-
-//Create Route
-app.get("/listings/new", (req, res) => {
-	res.render("./listings/new.ejs");
-});
-
-app.post(
-	"/listings",
-	validateListing,
-	wrapAsync(async (req, res, next) => {
-		const newListing = new listing(req.body.listing);
-		await newListing.save();
-		res.redirect("/listings");
-	})
-);
-
-//Edit Route
-app.get(
-	"/listings/:id/edit",
-	wrapAsync(async (req, res) => {
-		let { id } = req.params;
-		const listingData = await listing.findById(id);
-		res.render("./listings/edit.ejs", { listingData });
-	})
-);
-
-//Update Route
-app.put(
-	"/listings/:id",
-	validateListing,
-	wrapAsync(async (req, res) => {
-		let { id } = req.params;
-		await listing.findByIdAndUpdate(id, { ...req.body.listing });
-		res.redirect(`/listings/${id}`);
-	})
-);
-
-app.delete(
-	"/listings/:id",
-	wrapAsync(async (req, res) => {
-		let { id } = req.params;
-		await listing.findByIdAndDelete(id);
-		res.redirect("/listings");
-	})
-);
-
-// Show Route
-app.get(
-	"/listings/:id",
-	wrapAsync(async (req, res) => {
-		let { id } = req.params;
-		const listingData = await listing.findById(id).populate("reviews");
-		res.render("./listings/show.ejs", { listingData });
-	})
-);
+app.use("/listings", listings);
 
 //Review Post Route
 app.post(
