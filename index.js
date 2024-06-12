@@ -33,7 +33,7 @@ app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
 
 app.get("/", (req, res) => {
-	res.send("Hi, I am root.");
+	res.redirect("/listings");
 });
 
 app.all("*", (req, res, next) => {
