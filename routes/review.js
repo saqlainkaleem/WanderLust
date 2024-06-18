@@ -29,6 +29,7 @@ router.post(
 
 		await newReview.save();
 		await Listing.save();
+		req.flash("success", "New Review Created!");
 
 		res.redirect(`/listings/${Listing._id}`);
 	})
