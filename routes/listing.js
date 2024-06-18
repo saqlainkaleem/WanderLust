@@ -46,7 +46,10 @@ router.get(
 	wrapAsync(async (req, res) => {
 		let { id } = req.params;
 		const listingData = await listing.findById(id);
-
+		if (!listingData) {
+			req.flash("error", "Listing you requested for does not exist!");
+			res.redirect("/listings");
+		}
 		res.render("./listings/edit.ejs", { listingData });
 	})
 );
