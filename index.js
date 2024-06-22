@@ -66,8 +66,9 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use("/listings", listings);
-app.use("/listings/:id/reviews", reviews);
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
 
 //404 Page
 app.all("*", (req, res, next) => {
