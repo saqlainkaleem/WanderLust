@@ -4,7 +4,11 @@
 		<h3><%= listingData.title %></h3>
 	</div>
 	<div class="card col-6 offset-3 show-card listing-card">
-		<img src="<%= listingData.image %>" class="show-img" alt="Listing image" />
+		<img
+			src="<%= listingData.image.url %>"
+			class="show-img"
+			alt="Listing image"
+		/>
 		<div class="card-body">
 			<p class="card-text">
 				Owned By : <i><%= listingData.owner.username %></i>
