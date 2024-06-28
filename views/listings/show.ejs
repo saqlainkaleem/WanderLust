@@ -7,13 +7,14 @@
 		<img src="<%= listingData.image %>" class="show-img" alt="Listing image" />
 		<div class="card-body">
 			<p class="card-text">
-				<i><%= listingData.owner.username %></i>
-				<br />
-				<%= listingData.description %> <br />
-				&#8377;<%= listingData.price.toLocaleString("en-IN") %> <br />
-				<%= listingData.location %> <br />
-				<%= listingData.country %>
+				Owned By : <i><%= listingData.owner.username %></i>
 			</p>
+			<p class="card-text"><%= listingData.description %></p>
+			<p class="card-text">
+				&#8377;<%= listingData.price.toLocaleString("en-IN") %>
+			</p>
+			<p class="card-text"><%= listingData.location %></p>
+			<p class="card-text"><%= listingData.country %></p>
 		</div>
 	</div>
 	<div class="btns">
