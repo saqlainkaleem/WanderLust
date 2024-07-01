@@ -2,6 +2,7 @@ const Listing = require("../models/listing");
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
+const { cloudinary } = require("../cloudConfig.js");
 module.exports.index = async (req, res) => {
 	const allListings = await Listing.find({});
 	res.render("./listings/index.ejs", { allListings });
@@ -71,6 +72,7 @@ module.exports.updateListing = async (req, res) => {
 	if (typeof req.file !== "undefined") {
 		let url = req.file.path;
 		let filename = req.file.filename;
+		cloudinary.uploader.destroy(listing.image.filename);
 		listing.image = { url, filename };
 		await listing.save();
 	}
