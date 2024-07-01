@@ -149,6 +149,11 @@ body {
 	display: none;
 }
 
+.custom-switch-color:checked {
+	background-color: #fe424d !important;
+	border-color: #fe424d !important;
+}
+
 /* Footer*/
 .footer {
 	background-color: #f7f7f7;
