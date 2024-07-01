@@ -15,8 +15,10 @@
 			loading="lazy"
 		/>
 		<div class="card-body">
-			<p class="card-text">
-				Owned By : <i><%= listingData.owner.username %></i>
+			<p class="card-text owner-rating">
+				<span> Owned By : <i><%= listingData.owner.username %></i></span>
+
+				<span class="starability-result card-text" data-rating="4"></span>
 			</p>
 
 			<p class="card-text"><%= listingData.description %></p>
