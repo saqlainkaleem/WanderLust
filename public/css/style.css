@@ -103,7 +103,11 @@ body {
 .show-img {
 	height: 30vh;
 }
-
+.owner-rating {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
 .btns {
 	display: flex;
 }
