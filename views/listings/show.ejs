@@ -12,11 +12,13 @@
 			src="<%= listingData.image.url %>"
 			class="show-img"
 			alt="Listing image"
+			loading="lazy"
 		/>
 		<div class="card-body">
 			<p class="card-text">
 				Owned By : <i><%= listingData.owner.username %></i>
 			</p>
+
 			<p class="card-text"><%= listingData.description %></p>
 			<p class="card-text">
 				&#8377;<%= listingData.price.toLocaleString("en-IN") %>
