@@ -35,8 +35,14 @@
 		<form
 			action="/listings/<%= listingData._id %>?_method=DELETE"
 			method="post"
+			id="deletelisting"
 		>
-			<button class="btn btn-dark offset-5">DELETE</button>
+			<button
+				class="btn btn-dark offset-5"
+				onclick="return confirm('Are you sure you want to delete this listing?')"
+			>
+				DELETE
+			</button>
 		</form>
 	</div>
 	<% } %>
