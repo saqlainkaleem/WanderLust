@@ -15,7 +15,7 @@ body {
 }
 
 .logo {
-	color: #fe424d !important;
+	color: #ff385c !important;
 	font-size: 2rem;
 }
 
@@ -89,13 +89,13 @@ body {
 
 /* New Listing Page */
 .add-btn {
-	background-color: #fe424d !important;
+	background-color: #ff385c !important;
 	border: none !important;
 }
 
 /* Edit Page */
 .edit-btn {
-	background-color: #fe424d !important;
+	background-color: #ff385c !important;
 	border: none !important;
 }
 
@@ -150,8 +150,8 @@ body {
 }
 
 .custom-switch-color:checked {
-	background-color: #fe424d !important;
-	border-color: #fe424d !important;
+	background-color: #ff385c !important;
+	border-color: #ff385c !important;
 }
 
 /* Footer*/
@@ -188,7 +188,7 @@ body {
 }
 
 .footer a:hover {
-	color: #fe424d;
+	color: #ff385c;
 }
 
 .social-link {
