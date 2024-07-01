@@ -103,11 +103,13 @@
 			<div class="card-body">
 				<p class="card-text">
 					<b><%= listing.title %></b> <br />
-					&#8377;<%= listing.price.toLocaleString("en-IN") %> / night
-					&nbsp;&nbsp; +18% GST
+					<span class="price-info"
+						>&#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+					</span>
+
 					<i class="tax-info"
 						>&nbsp;&nbsp;&#8377;<b
-							><%= (listing.price * 1.18).toLocaleString("en-IN") %></b
+							><%= (listing.price * 1.18).toLocaleString("en-IN") %>/ night</b
 						></i
 					>
 				</p>
@@ -121,13 +123,20 @@
 	let taxSwitch = document.getElementById("flexSwitchCheckDefault");
 	function taxToggler() {
 		let taxInfo = document.getElementsByClassName("tax-info");
+		let priceInfo = document.getElementsByClassName("price-info");
 		if (taxSwitch.checked == true) {
 			for (info of taxInfo) {
 				info.style.display = "inline";
 			}
+			for (price of priceInfo) {
+				price.style.textDecoration = "line-through";
+			}
 		} else {
 			for (info of taxInfo) {
 				info.style.display = "none";
+			}
+			for (price of priceInfo) {
+				price.style.textDecoration = "none";
 			}
 		}
 	}
