@@ -206,3 +206,33 @@ body {
 	color: #666;
 	margin-top: 20px;
 }
+
+/* Styles for the loader container */
+.loader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh; /* Full viewport height */
+	background-color: #f0f0f0; /* Light background color */
+}
+
+/* Styles for the SVG loader */
+.loader-svg {
+	width: 100px; /* Adjust size as needed */
+	height: 100px; /* Adjust size as needed */
+	animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(0.8);
+		opacity: 0.7;
+	}
+	50% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(0.8);
+		opacity: 0.7;
+	}
+}

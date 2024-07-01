@@ -20,3 +20,13 @@
 		);
 	});
 })();
+
+// Example JavaScript to control loader visibility
+document.addEventListener("DOMContentLoaded", function () {
+	// Simulate async operation (e.g., API request)
+	setTimeout(function () {
+		// When content is loaded or operation complete, hide loader
+		document.getElementById("loader").style.display = "none";
+		document.getElementById("content").style.display = "block"; // Show main content
+	}, 500); // Simulated 1 second delay
+});

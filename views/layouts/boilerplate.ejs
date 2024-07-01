@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/x-icon" href="/assets/logo.svg">
+		<link rel="icon" type="image/x-icon" href="/assets/logo.svg" />
 		<title>WanderLust</title>
 		<link rel="stylesheet" href="/css/style.css" />
 		<link
@@ -35,7 +35,18 @@
 	<body>
 		<%- include("../includes/navbar.ejs") %>
 		<div class="container">
-			<%- include("../includes/flash.ejs") %> <%- body %>
+			<div id="loader" class="loader">
+				<img
+					src="/assets/logo.svg"
+					class="loader-svg"
+					alt="Loading..."
+					width="100"
+					height="100"
+				/>
+			</div>
+
+			<!--  main content -->
+			<div id="content"><%- include("../includes/flash.ejs") %><%- body %></div>
 		</div>
 		<%- include("../includes/footer.ejs") %>
 		<script
