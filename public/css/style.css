@@ -145,3 +145,8 @@ body {
 .filter p {
 	font-size: 0.8rem;
 }
+.tax-info {
+	display: none;
+}
+
+/* searchbar */
