@@ -1,0 +1,44 @@
+<!-- careers.ejs -->
+
+<% layout("/layouts/boilerplate") %>
+<!-- careers.ejs -->
+
+<div class="container">
+	<h1 class="mt-5 mb-4 text-center">Our Values and Culture</h1>
+	<div class="row" id="culture-values">
+		<% cultureValues.forEach((value, index) => { %>
+		<div class="col-md-6 mb-4">
+			<div class="career-card h-100 border-0 shadow-sm">
+				<div class="career-card-body">
+					<h5 class="career-card-title">
+						<i class="icon <%= value.icon %>"></i> <%= value.title %>
+					</h5>
+					<p class="career-card-text"><%= value.description %></p>
+				</div>
+			</div>
+		</div>
+		<% }); %>
+	</div>
+</div>
+<hr class="my-5">
+
+    <section id="jobs-section" class="my-5">
+        <h2 class="text-center mb-4">Current Job Openings</h2>
+        <div class="row">
+            <% jobOpenings.forEach((job, index) => { %>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm" style="padding: 1rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= job.title %></h5>
+                            <p class="card-text">
+                                <strong>Location:</strong> <%= job.location %><br>
+                                <strong>Department:</strong> <%= job.department %>
+                            </p>
+                            <a href="/jobs" class="btn btn-primary" style="background-color: #ff385c; border-color: #ff385c;">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+</div>
