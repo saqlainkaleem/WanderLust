@@ -1,7 +1,10 @@
+if (process.env.NODE_ENV != "production") {
+	require("dotenv").config();
+}
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = process.env.MONGODB_URL;
 
 main()
 	.then(() => {
@@ -19,7 +22,7 @@ const initDB = async () => {
 	await Listing.deleteMany({});
 	initData.data = initData.data.map((obj) => ({
 		...obj,
-		owner: "66766b74fec457190f887839",
+		owner: "668a50d2161ec5d44ca2e56f",
 	}));
 	await Listing.insertMany(initData.data);
 	console.log("Data was initialized");
