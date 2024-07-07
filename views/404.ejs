@@ -1,0 +1,54 @@
+<!-- views/404.ejs -->
+<style>
+	.error-container {
+		height: 40vh;
+		background-color: #fff;
+		padding: 20px;
+		border: 1px solid #ddd;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+
+	.icon-container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.icon-container i {
+		font-size: 24px;
+		color: #666;
+		margin: 10px;
+		animation: spin 2s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+</style>
+<% layout("/layouts/boilerplate") %>
+<div class="container py-5">
+	<div class="row justify-content-center">
+		<div class="col-md-10">
+			<div class="error-container text-center">
+				<i class="fas fa-exclamation-triangle fs-1 text-danger mb-3"></i>
+				<h1 class="display-4">Oops! Job Not Found</h1>
+				<p class="lead">
+					The Job you're looking for doesn't exist or has been removed.
+				</p>
+				<a
+					href="/careers"
+					class="btn btn-primary"
+					style="background-color: #ff385c; border-color: #ff385c"
+					>See Other Openings</a
+				>
+			</div>
+		</div>
+	</div>
+</div>
