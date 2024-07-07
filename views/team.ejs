@@ -1,0 +1,97 @@
+<!-- views/team.ejs -->
+
+<style>
+	.card-container {
+		padding: 40px 0;
+		width: 100vw;
+	}
+
+	.card {
+		border: none;
+		background: #fff;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.card:hover {
+		transform: translateY(-5px);
+	}
+
+	.card-body {
+		padding: 40px;
+		text-align: left;
+	}
+
+	.card-title {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: #333;
+		margin-bottom: 20px;
+	}
+
+	.card-text {
+		font-size: 1.2rem;
+		color: #555;
+		line-height: 1.6;
+	}
+
+	.lead {
+		font-size: 1.4rem;
+		font-weight: bold;
+		color: #6c757d;
+	}
+
+	.profile-img {
+		max-width: 300px;
+		height: auto;
+		border-radius: 10px;
+		margin-bottom: 20px;
+	}
+</style>
+<% layout("/layouts/boilerplate") %>
+
+<div class="card-container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+			<div class="card p-4">
+				<div class="row g-0 flex justify-between">
+					<div class="col-md-4">
+						<img
+							src="https://media.licdn.com/dms/image/D5603AQFybgBjniTcRQ/profile-displayphoto-shrink_400_400/0/1713025257267?e=1725494400&v=beta&t=DcAFyA3N_a1P_QA21AcYQUBRDKI6dUaxfjl8Gl_K3a8"
+							class="img-fluid profile-img"
+							loading="lazy"
+							alt="Mohd Kaleem Saqlaini"
+						/>
+						<span style="text-align: center">
+							<h2 class="card-title">Mohd Kaleem Saqlaini</h2>
+							<p class="lead">Founder & CEO</p>
+						</span>
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<p class="card-text">
+								Mohd Kaleem Saqlaini is the Founder and CEO of Wanderlust Homes.
+								He completed his Diploma in Computer Engineering from Jamia
+								Millia Islamia in 2020 and his Bachelor's in Computer Science
+								Engineering from Dr. APJ Abdul Kalam Technical University in
+								2023. With a passion for technology and innovation, Mohd Kaleem
+								Saqlaini is dedicated to creating exceptional travel experiences
+								through Wanderlust Homes. His leadership drives the company's
+								vision to redefine hospitality and empower travelers worldwide.
+							</p>
+							<p class="card-text">
+								Beyond his academic achievements, Mohd Kaleem Saqlaini has a
+								strong background in software development and project
+								management. He believes in continuous learning and applying
+								cutting-edge technologies to enhance customer satisfaction and
+								operational efficiency at Wanderlust Homes. Under his guidance,
+								the company has grown exponentially, expanding its reach and
+								services to cater to diverse traveler needs.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
