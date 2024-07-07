@@ -21,7 +21,7 @@ const userRouter = require("./routes/user.js");
 const emailRoutes = require("./routes/email.js");
 const pagesRoutes = require("./routes/pages.js");
 const MONGO_URL = process.env.MONGODB_URL;
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 main()
 	.then(() => {
 		console.log("connected to DB");
