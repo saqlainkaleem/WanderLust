@@ -21,7 +21,7 @@ const userRouter = require("./routes/user.js");
 const emailRoutes = require("./routes/email.js");
 const pagesRoutes = require("./routes/pages.js");
 const MONGO_URL = process.env.MONGODB_URL;
-const PORT = process.env.PORT || 8080;
+
 main()
 	.then(() => {
 		console.log("connected to DB");
@@ -100,6 +100,6 @@ app.use((err, req, res, next) => {
 	res.status(statusCode).render("error.ejs", { message });
 });
 
-app.listen(PORT, () => {
-	console.log(`Server is listening on port ${PORT}`);
+app.listen(8080, () => {
+	console.log('Server is listening on port 8080');
 });
